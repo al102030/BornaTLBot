@@ -2,4 +2,7 @@ from TLMethods import Methods
 
 
 if __name__ == "__main__":
-    print(Methods.get_update())
+    secret = "jlg754bvjhv9k8bmvfd"
+    url = "al102030.pythonanywhere.com"
+    # Methods.remove_webhook()
+    print(Methods.set_webhook(url))

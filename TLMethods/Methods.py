@@ -49,3 +49,17 @@ def set_webhook(host_link):
     response = requests.post(url, json=payload, headers=headers, timeout=10)
 
     return response
+
+
+def remove_webhook():
+
+    url = f"https://api.telegram.org/bot{token}/setWebhook?remove="
+
+    headers = {
+        "accept": "application/json",
+        "content-type": "application/json"
+    }
+
+    response = requests.post(url, headers=headers, timeout=10)
+
+    return response
