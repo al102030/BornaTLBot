@@ -1,9 +1,7 @@
-config/
 token.py
 secret.py
 .DS_Store
 *.mp4
-video/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
