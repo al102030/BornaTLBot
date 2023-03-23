@@ -6,4 +6,4 @@ if __name__ == "__main__":
     # url = "al102030.pythonanywhere.com"
     # Methods.remove_webhook()
     # print(Methods.set_webhook(url))
-    print(Methods.send_video("Iron_Man.mp4", "112042461"))
+    print(Methods.send_video(".mp4", "112042461"))
