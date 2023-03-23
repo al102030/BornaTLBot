@@ -63,3 +63,23 @@ def remove_webhook():
     response = requests.post(url, headers=headers, timeout=10)
 
     return response
+
+
+def send_video(pth, chat_id):
+    url = f"https://api.telegram.org/bot{token}/sendVideo"
+
+    my_file = open(pth, 'rb')
+
+    parameters = {
+        "caption": "Your file downloaded!",
+        "disable_notification": False,
+        "reply_to_message_id": None,
+        "chat_id": chat_id
+    }
+    files = {
+        "video": my_file,
+    }
+
+    response = requests.post(url, data=parameters, files=files, timeout=50)
+
+    print(response.text)
