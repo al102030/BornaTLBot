@@ -16,8 +16,10 @@ def index():
     if request.method == 'POST':
         msg = request.get_json()
         chat_id = msg['message']['chat']['id']
-        txt = msg['message']['text']
-        bot_methods.send_message(txt, chat_id)
+        # txt = msg['message']['text']
+        from_chat_id = msg['message']['from']['id']
+        message_id = msg['message']['message_id']
+        bot_methods.forward_message(message_id, chat_id, from_chat_id)
         return Response('ok', status=200)
     else:
         return '<h1>No OK</h1>'

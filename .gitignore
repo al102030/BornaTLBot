@@ -2,6 +2,7 @@ token.py
 secret.py
 .DS_Store
 *.mp4
+jexample.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
