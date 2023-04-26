@@ -7,6 +7,9 @@ jexample.json
 __pycache__/
 *.py[cod]
 *$py.class
+.gitignore
+Pipfile
+Pipfile.lock
 
 # C extensions
 *.so
