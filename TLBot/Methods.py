@@ -131,6 +131,174 @@ class Methods:
             "video": my_file,
         }
 
-        response = requests.post(url, data=parameters, files=files, timeout=20)
+        response = requests.post(url, data=parameters, files=files, timeout=30)
+
+        return response.text
+
+    def send_audio(self, pth, chat_id, caption=""):
+
+        url = f"https://api.telegram.org/bot{self.token}/sendAudio"
+
+        my_file = open(pth, 'rb')
+        parameters = {
+            "caption": caption,
+            "disable_notification": False,
+            "reply_to_message_id": None,
+            "chat_id": chat_id
+        }
+        files = {
+            "audio": my_file
+        }
+
+        response = requests.post(url, data=parameters, files=files, timeout=30)
+
+        return response.text
+
+    def send_document(self, pth, chat_id, caption=""):
+
+        url = f"https://api.telegram.org/bot{self.token}/sendDocument"
+
+        my_file = open(pth, 'rb')
+        parameters = {
+            "caption": caption,
+            "disable_notification": False,
+            "reply_to_message_id": None,
+            "chat_id": chat_id
+        }
+        files = {
+            "document": my_file
+        }
+
+        response = requests.post(url, data=parameters, files=files, timeout=30)
+
+        return response.text
+
+    def send_sticker(self, sticker, chat_id):
+
+        url = f"https://api.telegram.org/bot{self.token}/sendSticker"
+
+        payload = {
+            "sticker": sticker,
+            "chat_id": chat_id,
+            "disable_notification": False,
+            "reply_to_message_id": None
+        }
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+
+        response = requests.post(
+            url, json=payload, headers=headers, timeout=20)
+
+        return response.text
+
+    def send_voice(self, voice, chat_id):
+
+        url = f"https://api.telegram.org/bot{self.token}/sendVoice"
+
+        payload = {
+            "voice": voice,
+            "disable_notification": False,
+            "reply_to_message_id": None,
+            "chat_id": chat_id
+        }
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+
+        response = requests.post(
+            url, json=payload, headers=headers, timeout=20)
+
+        return response.text
+
+    def send_location(self, lat, lan, chat_it):
+
+        url = f"https://api.telegram.org/bot{self.token}/sendLocation"
+
+        payload = {
+            "latitude": lat,
+            "longitude": lan,
+            "disable_notification": False,
+            "reply_to_message_id": None,
+            "chat_id": chat_it
+        }
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+
+        response = requests.post(
+            url, json=payload, headers=headers, timeout=20)
+
+        return response.text
+
+    # typing, upload_photo, record_video, upload_video, record_video_note, upload_video_note
+    # record_voice, upload_voice, upload_document, choose_sticker, find_location
+
+    def send_chat_action(self, action, chat_id):
+
+        url = f"https://api.telegram.org/bot{self.token}/sendChatAction"
+
+        payload = {
+            "action": action,
+            "chat_id": chat_id
+        }
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+
+        response = requests.post(
+            url, json=payload, headers=headers, timeout=20)
 
         print(response.text)
+
+    def get_user_profile_photos(self, user_id):
+
+        url = f"https://api.telegram.org/bot{self.token}/getUserProfilePhotos"
+
+        payload = {
+            "user_id": user_id,
+            "offset": None,
+            "limit": None
+        }
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+
+        response = requests.post(
+            url, json=payload, headers=headers, timeout=20)
+
+        return response.text
+
+    def get_file(self, file_id):
+
+        url = f"https://api.telegram.org/bot{self.token}/getFile"
+
+        payload = {
+            "file_id": file_id}
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+
+        response = requests.post(
+            url, json=payload, headers=headers, timeout=20)
+
+        return response.text
+
+    def download_file(self, file_path):
+        url = f"https://api.telegram.org/file/bot{self.token}/{file_path}"
+
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+
+        response = requests.post(
+            url, headers=headers, timeout=20)
+
+        return response.text

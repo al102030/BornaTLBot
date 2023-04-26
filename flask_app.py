@@ -1,9 +1,8 @@
 from flask import Flask, request, Response
 from TLBot.Methods import Methods
-from config.token import token
+from config.token import token, url
 
 
-url = "al102030.pythonanywhere.com"
 bot_methods = Methods(token)
 bot_methods.remove_webhook()
 bot_methods.set_webhook(url)
